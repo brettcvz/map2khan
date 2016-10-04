@@ -11,25 +11,25 @@ var example_scores = {
 
 //Score range: [low, high] -> low <= score < high
 var teams = {
-  "Yellow"     : { score_range: [000, 161], color: "#fffdb6", },
-  "Light Blue" : { score_range: [161, 179], color: "#F6FFFF", },
-  "Orange"     : { score_range: [179, 192], color: "#ffc675", },
-  "Green"      : { score_range: [192, 204], color: "#b5ff97", },
-  "Purple"     : { score_range: [204, 213], color: "#c99fff", },
-  "Pink"       : { score_range: [213, 221], color: "#ffb5e5", },
-  "Red"        : { score_range: [221, 226], color: "#ffb2b2", },
-  "Dark Blue"  : { score_range: [226, 231], color: "#618aff", },
-  "Grey"       : { score_range: [231, 235], color: "#d5d5d5", },
-  "Silver"     : { score_range: [235, 999], color: "#eaeaea", },
+  "Yellow"     : { score_range: [000, 161], color: "#fffdb6", hash: "yellow"},
+  "Light Blue" : { score_range: [161, 179], color: "#F6FFFF", hash: "lightblue"},
+  "Orange"     : { score_range: [179, 192], color: "#ffc675", hash: "orange"},
+  "Green"      : { score_range: [192, 204], color: "#b5ff97", hash: "green"},
+  "Purple"     : { score_range: [204, 213], color: "#c99fff", hash: "purple"},
+  "Pink"       : { score_range: [213, 221], color: "#ffb5e5", hash: "pink"},
+  "Red"        : { score_range: [221, 226], color: "#ffb2b2", hash: "red"},
+  "Dark Blue"  : { score_range: [226, 231], color: "#618aff", hash: "darkblue"},
+  "Grey"       : { score_range: [231, 235], color: "#d5d5d5", hash: "grey"},
+  "Silver"     : { score_range: [235, 999], color: "#eaeaea", hash: "silver"},
 };
 
 var splitScore = function(scores) {
   return {
       "name": scores[0],
       "oat": {low_score: scores[1][0], high_score: scores[1][1]},
-      "rcn": {low_score: scores[2][0], high_score: scores[2][1]},
-      "geo": {low_score: scores[3][0], high_score: scores[3][1]},
-      "sp":  {low_score: scores[4][0], high_score: scores[4][1]},
+      "no": {low_score: scores[2][0], high_score: scores[2][1]},
+      "md": {low_score: scores[3][0], high_score: scores[3][1]},
+      "geo":  {low_score: scores[4][0], high_score: scores[4][1]},
   };
 };
 
@@ -48,12 +48,12 @@ var calculateStudentScores = function(all_scores) {
     for (var i=0; i < all_scores.length; i++) {
         var student = splitScore(all_scores[i]);
 
-        var areas = ["oat", "rcn", "geo", "sp"];
+        var areas = ["oat", "no", "md", "geo"];
         for (var j=0; j < areas.length; j++) {
             var area = areas[j];
             student[area].teamName = scoreToTeam(student[area]);
             student[area].color = teams[student[area].teamName].color;
-            student[area].link = "/playlist/"+area+"#"+student[area].teamName;
+            student[area].link = "http://www.map2khan.com/playlists/"+area+".html#"+teams[student[area].teamName].hash;
         }
 
         student_scores.push(student);

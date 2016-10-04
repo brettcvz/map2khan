@@ -557,44 +557,44 @@ div {
     padding-bottom: 2%;
 }
 
-.yellow {
+#yellow {
     background: #fffdb6;
 }
 
-.lightblue {
+#lightblue {
     background: #F6FFFF;
 }
 
-.orange {
+#orange {
     background: #ffc675;
 }
 
-.green {
+#green {
     background: #b5ff97;
 }
 
-.purple {
+#purple {
     background: #c99fff;
 }
 
-.pink {
+#pink {
     background: #ffb5e5;
 }
 
-.red {
+#red {
     background: #ffb2b2;
 }
 
-.darkblue {
+#darkblue {
     background:#618aff;
 }
 
-.grey {
+#grey {
     background:#d5d5d5;
     ;
 }
 
-.silver {
+#silver {
     background:#eaeaea;
 }
 

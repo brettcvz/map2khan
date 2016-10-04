@@ -6,13 +6,13 @@ html
             tr
                 th(style="padding: 8px 12px 8px 0px; text-align: left") Student
                 th(style="padding: 8px 12px 8px 0px; text-align: left") Operations and Algebraic Thinking
-                th(style="padding: 8px 12px 8px 0px; text-align: left") Real and Complex Number Systems
+                th(style="padding: 8px 12px 8px 0px; text-align: left") Number and Operations
+                th(style="padding: 8px 12px 8px 0px; text-align: left") Measurement and Data
                 th(style="padding: 8px 12px 8px 0px; text-align: left") Geometry
-                th(style="padding: 8px 12px 8px 0px; text-align: left") Statistics and Probability
             for student in student_scores
                 tr(style:"padding: 5px")
                     th(style="text-align: left")= student.name
-                    for area in ["oat", "rcn", "geo", "sp"]
+                    for area in ["oat", "no", "md", "geo"]
                         td(style="background-color: #{student[area].color}; padding: 8px; border: 1px solid #BBB;")
                             p(style="margin-bottom: 3px")
                               a(style="font-size: 18px; text-decoration: underline; color: #060361", href=student[area].link, target="_blank")= student[area].teamName

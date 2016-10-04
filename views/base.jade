@@ -27,9 +27,9 @@ html
                         tr
                             th Student Name
                             th Operations and Algebraic Thinking
-                            th The Real and Complex Number Systems
+                            th Number and Operations
+                            th Measurement and Data
                             th Geometry
-                            th Statistics and Probability
                         tr.add-student.hidden
                             td 
                                 input(type='text',name='name',placeholder='Susie Chen').name
@@ -38,13 +38,13 @@ html
                                 input(type='text',name='oat',placeholder='181-192').oat
                                 p.error.hidden
                             td
-                                input(type='text',name='rcn',placeholder='203-209').rcn
+                                input(type='text',name='no',placeholder='203-209').no
                                 p.error.hidden
                             td
-                                input(type='text',name='geo',placeholder='177-187').geo
+                                input(type='text',name='md',placeholder='177-187').md
                                 p.error.hidden
                             td
-                                input(type='text',name='sp',placeholder='193-206').sp
+                                input(type='text',name='geo',placeholder='193-206').geo
                                 p.error.hidden
                             td
                                 input(type='submit', value="Add").btn.btn-success.add
@@ -60,9 +60,8 @@ html
                 .bulk-form.hidden
                     textarea#bulk-input
                         | #Rows should be of the form:
-                        | #Student Name, Operations & Algebraic Thinking (abc-xyz), Real and Complex Number Systems (abc-xyz), Geometry (abc-xyz), Statistics and Probability (abc-xyz)
+                        | #Student Name, Operations & Algebraic Thinking (abc-xyz), Number and Operations (abc-xyz), Measurement and Data (abc-xyz), Geometry (abc-xyz)
                         | #For Example:
                         | #Tommy Salz, 190-202, 178-190, 182-194, 177-189
                     button.btn.btn-success#bulk-save Add All
                     span#bulk-error.error.hidden
-

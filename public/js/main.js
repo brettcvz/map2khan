@@ -10,24 +10,24 @@ var show_edit = false;
 
 //Score range: [low, high] -> low <= score < high
 var teams = {
-    "Yellow"     : { score_range: [000, 161], color: "fffdb6", },
-    "Light Blue" : { score_range: [161, 179], color: "F6FFFF", },
-    "Orange"     : { score_range: [179, 192], color: "ffc675", },
-    "Green"      : { score_range: [192, 204], color: "b5ff97", },
-    "Purple"     : { score_range: [204, 213], color: "c99fff", },
-    "Pink"       : { score_range: [213, 221], color: "ffb5e5", },
-    "Red"        : { score_range: [221, 226], color: "ffb2b2", },
-    "Dark Blue"  : { score_range: [226, 231], color: "618aff", },
-    "Grey"       : { score_range: [231, 235], color: "d5d5d5", },
-    "Silver"     : { score_range: [235, 999], color: "eaeaea", },
+    "Yellow"     : { score_range: [000, 161], color: "fffdb6", hash: "yellow"},
+    "Light Blue" : { score_range: [161, 179], color: "F6FFFF", hash: "lightblue"},
+    "Orange"     : { score_range: [179, 192], color: "ffc675", hash: "orange"},
+    "Green"      : { score_range: [192, 204], color: "b5ff97", hash: "green"},
+    "Purple"     : { score_range: [204, 213], color: "c99fff", hash: "purple"},
+    "Pink"       : { score_range: [213, 221], color: "ffb5e5", hash: "pink"},
+    "Red"        : { score_range: [221, 226], color: "ffb2b2", hash: "red"},
+    "Dark Blue"  : { score_range: [226, 231], color: "618aff", hash: "darkblue"},
+    "Grey"       : { score_range: [231, 235], color: "d5d5d5", hash: "grey"},
+    "Silver"     : { score_range: [235, 999], color: "eaeaea", hash: "silver"},
 }
 var splitScore = function(scores) {
     return {
         "name": scores[0],
         "oat": scores[1],
-        "rcn": scores[2],
-        "geo": scores[3],
-        "sp": scores[4],
+        "no": scores[2],
+        "md": scores[3],
+        "geo": scores[4],
     };
 }
 
@@ -44,11 +44,11 @@ var scoreToTeam = function(score){
 var scoreToCell = function(scores, part) {
     var score = scores[part];
     var teamName = scoreToTeam(score);
-    var link = "https://example.com/"+part+"#" + teamName;
     var team = teams[teamName];
+    var link = "http://www.map2khan.com/playlists/"+part+".html#" + team.hash;
 
     var cell = "<td style='background-color: #" + team.color + "'>";
-    cell += "<a class='team' href='" + link +"'>" + teamName + "</a>";
+    cell += "<a class='team' href='" + link +"' target='_blank'>" + teamName + "</a>";
     cell += "<span class='scores'>" + score[0] + "-" + score[1] + "</span></td>";
     return cell;
 };
@@ -61,9 +61,9 @@ var refreshScores = function() {
 
         var row = "<tr class='student' data-index='"+i+"'><th>"+student.name+"</th>";
         row += scoreToCell(student, "oat");
-        row += scoreToCell(student, "rcn");
+        row += scoreToCell(student, "no");
+        row += scoreToCell(student, "md");
         row += scoreToCell(student, "geo");
-        row += scoreToCell(student, "sp");
         row += "<td class='remove'><i class='glyphicon glyphicon-remove' title='Remove Student'></i></td>";
         row += "</tr>";
         $(".add-student").before(row);
@@ -115,13 +115,13 @@ function parseAndAdd(text) {
             error("Invalid operations score", i); return false;
         }
         if (vals[2] == "" || !vals[2].match(/\d{3}-\d{3}/)) { 
-            error("Invalid number systems score", i); return false;
+            error("Invalid number score", i); return false;
         }
         if (vals[3] == "" || !vals[3].match(/\d{3}-\d{3}/)) { 
-            error("Invalid geometry score", i); return false;
+            error("Invalid measurement score", i); return false;
         }
         if (vals[4] == "" || !vals[4].match(/\d{3}-\d{3}/)) { 
-            error("Invalid statistics score", i); return false;
+            error("Invalid geometry score", i); return false;
         }
         scores.push([vals[0], vals[1].split("-"), vals[2].split("-"), vals[3].split("-"), vals[4].split("-")]);
     }
@@ -161,9 +161,9 @@ $(function(){
         var student = [];
         student.push($("#add-student-form .name").val());
         student.push($("#add-student-form .oat").val().split("-"));
-        student.push($("#add-student-form .rcn").val().split("-"));
+        student.push($("#add-student-form .no").val().split("-"));
+        student.push($("#add-student-form .md").val().split("-"));
         student.push($("#add-student-form .geo").val().split("-"));
-        student.push($("#add-student-form .sp").val().split("-"));
         all_scores.push(student);
         saveScores();
         refreshScores();
