@@ -70,6 +70,7 @@ app.set('view engine', 'jade');
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
+app.use('/playlists', express.static(__dirname + '/playlists'))
 
 app.get('/', function(request, response) {
     return response.render('base');
