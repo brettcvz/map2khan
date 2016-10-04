@@ -45,3 +45,43 @@
     color: #900;
     margin-left: 10px;
 }
+.yellow {
+    background: #fffdb6;
+}
+
+.lightblue {
+    background: #F6FFFF;
+}
+
+.orange {
+    background: #ffc675;
+}
+
+.green {
+    background: #b5ff97;
+}
+
+.purple {
+    background: #c99fff;
+}
+
+.pink {
+    background: #ffb5e5;
+}
+
+.red {
+    background: #ffb2b2;
+}
+
+.darkblue {
+    background:#618aff;
+}
+
+.grey {
+    background:#d5d5d5;
+    ;
+}
+
+.silver {
+    background:#eaeaea;
+}

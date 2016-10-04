@@ -11,16 +11,15 @@ html
     body
       .container
         .row
-            h1.col-md-12 Create Khan Playlists based on NWEA MAP scores
+            h1.col-md-12 Create Personalized Khan Playlists based on NWEA MAP scores
         .row
-            p.col-md-12
-                | Every year, NWEA publishes a document outlining 
-                a(href="https://support.nwea.org/khanrit") how RIT ranges correspond to Khan Academy lessons
-                |  - this tool helps you turn that information into playlists for your students. This tool is inspired by the fantastic work done by 
-                a(href="https://betaclassroom.wordpress.com/2016/10/02/awesomeness-comes-with-mild-medium-and-super-picante-options/") Jennie Dougherty at KIPP Bay Area
-                | .
-        .row
-            p.col-md-12 This tool is for the NWEA MAP test with grades 2-5.
+            .col-md-12
+                h3 How to use this tool
+                ol
+                    li Enter your students' NWEA RIT scores.  (Note: You can add individual students or bulk add a whole class)
+                    li Save the Personalized Playlists to your computer by clicking the blue button.
+                    li Share the HTML file with your students. You can upload to Google Docs!
+                p This tool is for the NWEA MAP test with grades 2-5.
         .row
             .col-md-12
                 h3.title Example Playlists:
@@ -55,7 +54,7 @@ html
                 button.btn.btn-primary#create Create playlists for your class
                 form(action="/download", method="POST", target="_blank")#export-form
                     input(type="hidden", name="all_scores_json" value="")#scores-input
-                    input(type="submit" value="Download Groupings").btn.btn-primary.btn-large.hidden#export
+                    input(type="submit" value="Save to Computer").btn.btn-primary.btn-large.hidden#export
         .bulk-pane.row
             .col-md-12
                 button.btn.btn-default#bulk.hidden Bulk Add Students
@@ -69,3 +68,54 @@ html
                     textarea#bulk-input
                     button.btn.btn-success#bulk-save Add All
                     span#bulk-error.error.hidden
+        .row
+            hr
+        .row
+            .col-md-12
+                h4 More Information about Groupings
+        .row
+            p.col-md-12
+                | Every year, NWEA publishes a document outlining 
+                a(href="https://support.nwea.org/khanrit") how RIT ranges correspond to Khan Academy lessons
+                |  - this tool helps you turn that information into playlists for your students. This tool is inspired by the fantastic work done by 
+                a(href="https://betaclassroom.wordpress.com/2016/10/02/awesomeness-comes-with-mild-medium-and-super-picante-options/") Jennie Dougherty at KIPP Bay Area
+        .row
+            .col-md-12
+                p Each student will be grouped into one of the following color groups based on the low-end of their RIT scores:
+                table.table
+                    tr
+                        th Grouping:
+                        td.yellow Yellow
+                        td.lightblue Light Blue
+                        td.orange Orange
+                        td.green Green
+                        td.purple Purple
+                        td.pink Pink
+                        td.red Red
+                        td.darkblue Dark Blue
+                        td.grey Grey
+                        td.silver Silver
+                    tr
+                        th RIT Score:
+                        td.yellow < 161
+                        td.lightblue 161 - 178
+                        td.orange 179 - 191
+                        td.green 192 - 203
+                        td.purple 204 - 212
+                        td.pink 213 - 220
+                        td.red 221 - 225
+                        td.darkblue 226 - 230
+                        td.grey 231 - 234
+                        td.silver > 235
+        .row
+            .col-md-12
+                p The color group will guide them to personalized Khan Academy content based on their level. The full set of content can be seen at these links:
+                    li 
+                        a(href="http://www.map2khan.com/playlists/oat.html", target="oat") Operations and Algebraic Thinking
+                    li 
+                        a(href="http://www.map2khan.com/playlists/no.html", target="no") Number and Operations
+                    li 
+                        a(href="http://www.map2khan.com/playlists/md.html", target="md") Measurement and Data
+                    li
+                        a(href="http://www.map2khan.com/playlists/geo.html", target="geo") Geometry
+                    
