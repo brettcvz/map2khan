@@ -1,29 +1,24 @@
 {
-  "name": "node-js-sample",
-  "version": "0.2.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "Map2Khan",
+  "version": "0.1.0",
+  "description": "A simple app that aids in mapping NWEA MAP scores to Khan Academy exercises",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "^1.15.2",
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
   },
   "engines": {
     "node": "4.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
-  },
   "keywords": [
     "node",
-    "heroku",
-    "express"
+    "nwea",
+    "khan academy"
   ],
-  "author": "Mark Pundsack",
-  "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
-  ],
+  "author": "Brett van Zuiden",
   "license": "MIT"
 }

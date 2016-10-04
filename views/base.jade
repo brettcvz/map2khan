@@ -1,0 +1,68 @@
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        title Playlist Builder
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+        link(rel="stylesheet" href="/css/style.css")
+        script(src="/js/main.js")
+    body
+      .container
+        .row
+            h1.col-md-12 Create Khan Playlists based on NWEA MAP scores
+        .row
+            p.col-md-12
+                | Every year, NWEA publishes a document outlining 
+                a(href="https://support.nwea.org/khanrit") how RIT ranges correspond to Khan Academy lessons
+                |  - this tool helps you turn that information into playlists for your students. This tool is inspired by the fantastic work done by 
+                a(href="https://betaclassroom.wordpress.com/2016/10/02/awesomeness-comes-with-mild-medium-and-super-picante-options/") Jenny Dougherty at KIPP Bay Area
+                | .
+        .row
+            .col-md-12
+                h3.title Example Playlists:
+                form#add-student-form
+                    table#scores.table
+                        tr
+                            th Student Name
+                            th Operations and Algebraic Thinking
+                            th The Real and Complex Number Systems
+                            th Geometry
+                            th Statistics and Probability
+                        tr.add-student.hidden
+                            td 
+                                input(type='text',name='name',placeholder='Susie Chen').name
+                                p.error.hidden
+                            td
+                                input(type='text',name='oat',placeholder='181-192').oat
+                                p.error.hidden
+                            td
+                                input(type='text',name='rcn',placeholder='203-209').rcn
+                                p.error.hidden
+                            td
+                                input(type='text',name='geo',placeholder='177-187').geo
+                                p.error.hidden
+                            td
+                                input(type='text',name='sp',placeholder='193-206').sp
+                                p.error.hidden
+                            td
+                                input(type='submit', value="Add").btn.btn-success.add
+        .export-pane.row
+            .col-md-12
+                button.btn.btn-primary#create Create playlists for your class
+                form(action="/download", method="POST", target="_blank")#export-form
+                    input(type="hidden", name="all_scores_json" value="")#scores-input
+                    input(type="submit" value="Download Groupings").btn.btn-primary.btn-large.hidden#export
+        .bulk-pane.row
+            .col-md-12
+                button.btn.btn-default#bulk.hidden Bulk Add Students
+                .bulk-form.hidden
+                    textarea#bulk-input
+                        | #Rows should be of the form:
+                        | #Student Name, Operations & Algebraic Thinking (abc-xyz), Real and Complex Number Systems (abc-xyz), Geometry (abc-xyz), Statistics and Probability (abc-xyz)
+                        | #For Example:
+                        | #Tommy Salz, 190-202, 178-190, 182-194, 177-189
+                    button.btn.btn-success#bulk-save Add All
+                    span#bulk-error.error.hidden
+
